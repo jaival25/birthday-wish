@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ✨</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Dancing+Script&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(135deg, #ffd1dc, #ffc2e2, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientShift 22s ease-in-out infinite;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* 🌈 Smooth gradient */
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #ffd1dc, #ffc2e2, #fbc2eb);
+            }
+
+            25% {
+                background: linear-gradient(135deg, #ff9a9e, #fecfef, #fcb69f);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #d4a5ff, #cdb4db, #ffc8dd);
+            }
+
+            75% {
+                background: linear-gradient(135deg, #a0c4ff, #bdb2ff, #ffc6ff);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #ffd1dc, #ffc2e2, #fbc2eb);
+            }
+        }
+
+        /* Screens */
+        .screen {
+            position: absolute;
+            width: 100%;
+            max-width: 500px;
+            max-height: 95vh;
+            overflow-y: auto;
+            text-align: center;
+            padding: 10px;
+            transition: 1s;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Name */
+        .name {
+            font-size: clamp(26px, 6vw, 38px);
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Text */
+        p {
+            font-size: clamp(14px, 3.8vw, 16px);
+            line-height: 1.6;
+        }
+
+        /* Button */
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: none;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        /* Card */
+        .card {
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.4);
+        }
+
+        /* Images */
+        .slide-img {
+            width: 90%;
+            max-width: 450px;
+            max-height: 47vh;
+            object-fit: contain;
+            border-radius: 30px;
+            margin-bottom: 20px;
+
+            filter: blur(0px);
+            transform: scale(1.1);
+            opacity: 0.99;
+            transition: 1.2s;
+        }
+
+        #screen1 .slide-img {
+            width: 95%;
+            max-height: 50vh;
+        }
+
+        .show-img {
+            filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -120px;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            animation: rise 8s linear infinite;
+        }
+
+        @keyframes rise {
+            100% {
+                transform: translateY(-120vh);
+            }
+        }
+
+        /* Final text */
+        #finalText {
+            white-space: pre-line;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="screen" id="screen1">
+        <img src="c:\Users\JAIVAL\AppData\Local\Temp\cbe74131-bba2-4b0a-8a4e-7f4607cf08ab_WhatsApp Unknown 2026-04-20 at 1.57.51 AM.zip.8ab\WhatsApp Image 2026-04-20 at 1.57.44 AM.jpeg" class="slide-img">
+        <div class="name">Hey, <span id="typedName"></span> ✨</div>
+        <p>I made something for you…</p>
+        <button onclick="next(1)">Continue</button>
+    </div>
+
+    <div class="screen hidden" id="screen2">
+        <img src="c:\Users\JAIVAL\AppData\Local\Temp\8e5b8c85-9769-43e5-8b7d-7874b7ba4dd3_WhatsApp Unknown 2026-04-20 at 1.57.51 AM.zip.dd3\WhatsApp Image 2026-04-20 at 1.57.45 AM.jpeg" class="slide-img">
+        <p>Main usually itni deep baatein openly nahi bolta… but aaj bolna chahta hu.</p>
+        <button onclick="next(2)">Next</button>
+    </div>
+
+    <div class="screen hidden" id="screen3">
+        <img src="c:\Users\JAIVAL\AppData\Local\Temp\fba24c68-4c08-45ee-a793-36a0f2611e87_WhatsApp Unknown 2026-04-20 at 1.57.51 AM.zip.e87\WhatsApp Image 2026-04-20 at 1.57.45 AM (1).jpeg" class="slide-img">
+        <div class="card">
+            <p>
+                Tum sirf ek achhi person nahi ho… tum ek energy ho.
+                Tumhari presence calm bhi hai, aur spark bhi.
+            </p>
+            <button onclick="final()">One last thing…</button>
+        </div>
+    </div>
+
+    <div class="screen hidden" id="screen4">
+        <img src="c:\Users\JAIVAL\AppData\Local\Temp\f6f6c1d3-4787-4dc7-9227-4f0d049d66e6_WhatsApp Unknown 2026-04-20 at 1.57.51 AM.zip.6e6\WhatsApp Image 2026-04-20 at 1.57.44 AM (1).jpeg" class="slide-img">
+        <div class="card">
+            <h2 style="font-family: 'Dancing Script';">Happy Birthday 💫</h2>
+            <p id="finalText"></p>
+        </div>
+    </div>
+
+    <script>
+        // Name typing
+        const nameText = "SHREYA";
+        let i = 0;
+        function typeEffect() {
+            if (i < nameText.length) {
+                document.getElementById("typedName").innerHTML += nameText.charAt(i);
+                i++;
+                setTimeout(typeEffect, 120);
+            }
+        }
+        window.onload = typeEffect;
+
+        // Navigation
+        function next(n) {
+            document.getElementById("screen" + n).classList.add("hidden");
+            const nextScreen = document.getElementById("screen" + (n + 1));
+            nextScreen.classList.remove("hidden");
+
+            const img = nextScreen.querySelector(".slide-img");
+            setTimeout(() => img.classList.add("show-img"), 200);
+        }
+
+        // Final message
+        const finalMessage = `Happy Birthday SHREYA.
+
+Mujhe nahi pata future kya hold karta hai,
+aur main unnecessary kuch rush bhi nahi karna chahta.
+
+Bas itna kehna hai —
+tum jaisi ho, waise hi rehna.
+
+Tumhari value kisi explanation ki mohtaaj nahi hai.
+woh feel hoti hai… har uss insaan ko jo tumhe genuinely connect karta hai.
+
+Sach kahun…
+tum un logon mein se ho jo sirf milte nahi,
+dil mein halka sa ehsaas chhod jaate hain.
+
+Aur shayad tumhe kabhi realize bhi na ho,
+but you do make things better
+just by being the way you are.
+
+I hope this year brings you everything you truly deserve —
+peace, growth,
+aur woh sab jo tum dil se chahti ho.
+
+Stay the way you are.
+
+Have a really beautiful birthday.
+
+✨`;
+
+        function typeFinalMessage() {
+            let i = 0;
+            const target = document.getElementById("finalText");
+
+            function type() {
+                if (i < finalMessage.length) {
+                    target.innerHTML += finalMessage.charAt(i);
+                    i++;
+                    setTimeout(type, 35);
+                }
+            }
+            type();
+        }
+
+        function final() {
+            document.getElementById("screen3").classList.add("hidden");
+            document.getElementById("screen4").classList.remove("hidden");
+
+            setTimeout(typeFinalMessage, 800);
+        }
+
+        // Sparkles
+        setInterval(() => {
+            const s = document.createElement("div");
+            s.classList.add("sparkle");
+            s.innerHTML = "✨";
+            s.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 6000);
+        }, 400);
+    </script>
+
+</body>
+
+</html>
